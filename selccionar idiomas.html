@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traductor Simple con Python</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #1a365d;
+            background: linear-gradient(135deg, #667eea 0%, #2563eb 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            padding: 3rem 1rem;
+        }
+
+        header h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        header p {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            opacity: 0.95;
+        }
+
+        .content {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin-top: 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section h2 {
+            color: #2563eb;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #3b82f6;
+        }
+
+        .section h3 {
+            color: #1e40af;
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .section p {
+            margin-bottom: 1rem;
+            color: #334155;
+            font-size: 1.1rem;
+        }
+
+        .code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .code-block code {
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .highlight {
+            background: #dbeafe;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            color: #1e40af;
+            font-weight: 600;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .feature-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+        }
+
+        .step-list {
+            counter-reset: step-counter;
+            list-style: none;
+        }
+
+        .step-list li {
+            counter-increment: step-counter;
+            margin-bottom: 1.5rem;
+            padding-left: 3rem;
+            position: relative;
+        }
+
+        .step-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #3b82f6;
+            color: white;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .note {
+            background: #eff6ff;
+            border-left: 4px solid #3b82f6;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .note strong {
+            color: #1e40af;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 1.5rem;
+            }
+
+            .section h2 {
+                font-size: 1.5rem;
+            }
+
+            .code-block {
+                padding: 1rem;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌐 Traductor Simple con Python</h1>
+            <p>Explicación detallada del código usando deep_translator</p>
+        </header>
+
+        <div class="content">
+            <!-- Introducción -->
+            <div class="section">
+                <h2>📖 Introducción</h2>
+                <p>Este programa es un <span class="highlight">traductor interactivo</span> que permite convertir texto a diferentes idiomas utilizando la biblioteca <span class="highlight">deep_translator</span> de Python. El programa solicita al usuario un texto y permite elegir entre cinco idiomas de destino.</p>
+            </div>
+
+            <!-- Importaciones -->
+            <div class="section">
+                <h2>📦 Importación de Bibliotecas</h2>
+                <div class="code-block">
+                    <code>from deep_translator import GoogleTranslator</code>
+                </div>
+                <p>Se importa <span class="highlight">GoogleTranslator</span> de la biblioteca deep_translator, que utiliza la API de Google Translate para realizar las traducciones de manera gratuita y sencilla.</p>
+            </div>
+
+            <!-- Función principal -->
+            <div class="section">
+                <h2>⚙️ Función Principal: tra()</h2>
+                <p>Esta función contiene toda la lógica del traductor:</p>
+
+                <h3>1. Interfaz de Usuario</h3>
+                <div class="code-block">
+                    <code>print("=" * 50)
+print("             Traductor simple")
+print("=" * 50)</code>
+                </div>
+                <p>Crea un encabezado visual con líneas de separación para mejorar la presentación.</p>
+
+                <h3>2. Captura de Texto</h3>
+                <div class="code-block">
+                    <code>texto = input("\nEscribe el texto a traducir: ")</code>
+                </div>
+                <p>Solicita al usuario que ingrese el texto que desea traducir.</p>
+
+                <h3>3. Menú de Opciones</h3>
+                <div class="code-block">
+                    <code>print("\nPresiona una tecla para elegir el idioma de destino:")
+print("i = Inglés")
+print("f = Francés")
+print("a = Alemán")
+print("y = Italiano")
+print("p = Portugués")
+print("x = Salir del programa")</code>
+                </div>
+                <p>Muestra un menú interactivo con los idiomas disponibles y una opción para salir.</p>
+
+                <h3>4. Diccionario de Idiomas</h3>
+                <div class="code-block">
+                    <code>idiomas = {
+    "i": ["en", "inglés"],
+    "f": ["fr", "francés"],
+    "a": ["de", "alemán"],
+    "p": ["pt", "portugués"],
+    "y": ["it", "italiano"]
+}</code>
+                </div>
+                <p>Estructura de datos que almacena el código ISO del idioma y su nombre legible para cada opción.</p>
+
+                <h3>5. Procesamiento de la Opción</h3>
+                <div class="code-block">
+                    <code>tecla = input("Tu opción: ").lower()
+
+if tecla == "x":
+    print("\n¡Hasta pronto!")
+    exit()</code>
+                </div>
+                <p>Captura la opción del usuario y la convierte a minúsculas. Si elige 'x', el programa termina.</p>
+
+                <h3>6. Traducción</h3>
+                <div class="code-block">
+                    <code>if tecla in idiomas:
+    codigo = idiomas[tecla][0]
+    nombre = idiomas[tecla][1]
+    
+    try:
+        traduccion = GoogleTranslator(
+            source='auto', 
+            target=codigo
+        ).translate(texto)
+        print(f"\nTraducción en {nombre.upper()}:")
+        print(traduccion)
+    except Exception as e:
+        print("Ocurrió un error:", e)</code>
+                </div>
+                <p>Si la tecla es válida, realiza la traducción usando GoogleTranslator con detección automática del idioma de origen (<span class="highlight">source='auto'</span>) y muestra el resultado.</p>
+            </div>
+
+            <!-- Características -->
+            <div class="section">
+                <h2>✨ Características Principales</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>🔄 Detección Automática</h4>
+                        <p>El programa detecta automáticamente el idioma de origen.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🌍 5 Idiomas</h4>
+                        <p>Traduce a inglés, francés, alemán, italiano y portugués.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🔁 Bucle Infinito</h4>
+                        <p>Permite realizar múltiples traducciones sin reiniciar.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>⚠️ Manejo de Errores</h4>
+                        <p>Captura excepciones para evitar que el programa falle.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Flujo del programa -->
+            <div class="section">
+                <h2>🔄 Flujo del Programa</h2>
+                <ul class="step-list">
+                    <li>El bucle <span class="highlight">while True</span> mantiene el programa en ejecución continua.</li>
+                    <li>Se llama a la función <span class="highlight">tra()</span> que muestra el menú.</li>
+                    <li>El usuario ingresa el texto a traducir.</li>
+                    <li>El usuario selecciona el idioma de destino.</li>
+                    <li>Se realiza la traducción y se muestra el resultado.</li>
+                    <li>El programa regresa al paso 2 para una nueva traducción.</li>
+                </ul>
+            </div>
+
+            <!-- Instalación -->
+            <div class="section">
+                <h2>📥 Instalación de la Biblioteca</h2>
+                <p>Para usar este código, primero debes instalar la biblioteca:</p>
+                <div class="code-block">
+                    <code>pip install deep-translator</code>
+                </div>
+                <div class="note">
+                    <strong>Nota:</strong> Esta biblioteca es gratuita y no requiere API key, lo que la hace ideal para proyectos educativos y personales.
+                </div>
+            </div>
+
+            <!-- Ejemplo de uso -->
+            <div class="section">
+                <h2>💡 Ejemplo de Uso</h2>
+                <div class="code-block">
+                    <code>Escribe el texto a traducir: Hola mundo
+
+Presiona una tecla para elegir el idioma de destino:
+i = Inglés
+Tu opción: i
+
+Traducción en INGLÉS:
+Hello world</code>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="section">
+                <div class="note">
+                    <strong>💡 Ventajas del programa:</strong> Interfaz simple, fácil de usar, sin necesidad de conexión a APIs de pago, y código limpio y modular que facilita su mantenimiento y extensión.
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

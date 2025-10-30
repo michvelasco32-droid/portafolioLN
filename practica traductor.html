@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema con Código y Glosario</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5c842 0%, #ffd93d 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: #333;
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .content-wrapper {
+            background: #f5f5f5;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .tema-titulo {
+            background: linear-gradient(135deg, #f5c842 0%, #ffd93d 100%);
+            color: #333;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .tema-titulo h2 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .tema-titulo p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        .section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .section h3 {
+            color: #f5c842;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #f5c842;
+        }
+
+        .code-container {
+            background: #2d3748;
+            border-radius: 10px;
+            padding: 20px;
+            overflow-x: auto;
+            margin-top: 15px;
+        }
+
+        .code-container pre {
+            margin: 0;
+            color: #e2e8f0;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .code-container code {
+            display: block;
+        }
+
+        .keyword { color: #ff79c6; }
+        .function { color: #50fa7b; }
+        .string { color: #f1fa8c; }
+        .comment { color: #6272a4; }
+        .number { color: #bd93f9; }
+
+        .glosario-item {
+            background: #fffbf0;
+            border-left: 4px solid #f5c842;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .glosario-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(245, 200, 66, 0.3);
+        }
+
+        .glosario-item h4 {
+            color: #f5c842;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .glosario-item p {
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .parametros {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .parametros strong {
+            color: #f5c842;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .parametros code {
+            background: #2d3748;
+            color: #50fa7b;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .content-wrapper {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .tema-titulo h2 {
+                font-size: 1.5em;
+            }
+
+            .section h3 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Realizado por:valeria michell velasco maza</h1>
+            <p>3A de Inteligencia Artificial</p>
+        </div>
+
+        <div class="content-wrapper">
+            <div class="tema-titulo">
+                <h2>Tema 8: Practica traductor</h2>
+                <p>Creación y uso de funciones personalizadas</p>
+            </div>
+
+            <div class="section">
+                <h3>📝 Código del Ejemplo</h3>
+                <div class="code-container">
+                    <pre>from deep_translator import GoogleTranslator
+
+texto="hola mundo"
+print(texto)
+print("_____________________________________")
+print("idiomas")
+print("i=Ingles")
+print("f=Frances")
+print("a=Aleman")
+print("it=Italiano")
+print("p=Portugues")
+print("x=Cerrar programa")
+print("_____________________________________")
+
+def Traductor():
+    idioma=input("A que idioma deseas traducir la frase?(Selecciona la letra) ")
+
+    if idioma=="i":
+        ingles = GoogleTranslator(source='es', target='en').translate(texto)
+        print("Ingles: ",ingles)
+        Traductor()
+    elif idioma=="f":
+        frances = GoogleTranslator(source='es', target='fr').translate(texto)
+        print("Frances: ",frances)
+        Traductor()
+    elif idioma=="a":
+        aleman = GoogleTranslator(source='es', target='de').translate(texto)
+        print("Aleman: ",aleman)
+        Traductor()
+    elif idioma=="it":
+        italiano = GoogleTranslator(source='es', target='it').translate(texto)
+        print("Italiano: ",italiano)
+        Traductor()
+    elif idioma=="p":
+        portugues = GoogleTranslator(source='es', target='pt').translate(texto)
+        print("Portugues: ",portugues)
+        Traductor()
+    elif idioma=="x":
+        exit("Gracias por usas el traductor :)")
+    else:
+        print("Error")
+        Traductor()
+Traductor()</pre>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>📚 Glosario de Funciones</h3>
+
+                <div class="glosario-item">
+                    <h4>1. GoogleTranslator(source='es', target='en').translate(texto)</h4>
+                    <p>Esta funcion traduce el texto a el idioma seleccionado.</p>    
+                </div>
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
